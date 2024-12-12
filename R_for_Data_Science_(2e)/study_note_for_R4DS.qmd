@@ -141,3 +141,7 @@ ggplot(data=penguins,mapping=aes(x=flipper_length_mm,y=body_mass_g))+
 ```
 
 我们得到了一个点图，通过这个图，我们发现了身体质量和flipper长度之间的关系。
+
+2024-12-03
+
+2024-12-04

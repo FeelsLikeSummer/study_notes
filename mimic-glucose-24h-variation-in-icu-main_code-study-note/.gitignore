@@ -1,4 +1,4 @@
-*.csv
 .Rproj.user
 .Rhistory
-.idea
+.RData
+.Ruserdata
