@@ -3,7 +3,7 @@
     "path": "~/GitHub/study_notes/R_for_Data_Science_(2e)/study_note_for_R4DS.qmd",
     "project_path": "study_note_for_R4DS.qmd",
     "type": "quarto_markdown",
-    "hash": "3423953804",
+    "hash": "2977498548",
     "contents": "",
     "dirty": false,
     "created": 1733110133828.0,
@@ -16,16 +16,17 @@
         "Source": "Source",
         "rmdVisualCollapsedChunks": "",
         "docOutlineVisible": "1",
-        "rmdVisualModeLocation": "2:0",
-        "cursorPosition": "137,0",
-        "scrollLine": "0"
+        "rmdVisualModeLocation": "4451:7318.28564453125",
+        "cursorPosition": "225,0",
+        "scrollLine": "0",
+        "docOutlineSize": "89"
     },
     "folds": "",
-    "lastKnownWriteTime": 1733321150,
+    "lastKnownWriteTime": 1734061521,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1733321150997,
+    "last_content_update": 1734061521830,
     "read_only": false,
     "read_only_alternatives": []
 }

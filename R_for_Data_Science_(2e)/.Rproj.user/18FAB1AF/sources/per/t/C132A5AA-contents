@@ -145,3 +145,92 @@ ggplot(data=penguins,mapping=aes(x=flipper_length_mm,y=body_mass_g))+
 2024-12-03
 
 2024-12-04
+
+2024-12-13
+
+我们可以看到这之间的关系应该是一条直线，而不是一条曲线。
+
+我们发现有一个警告，告诉我们有两条数据被移除了，因为确实了x或者y，以至于软件无法描述这个点在图上。和R一样，ggplots2认为，如果有丢失的数据，不应该是沉默的，以至于遗漏。遇到缺失值是很平常的事。
+
+在我们看到flipper长度和体重有关系的时候，我们最好不要立刻确信，我们要怀疑它们之间的关系是否和其他的变量有关系。比如，不同种类的企鹅，flipper和体重的关系怎样？
+
+```{r}
+penguins |> 
+  ggplot(aes(y=body_mass_g,x=flipper_length_mm,color=species)) +
+  geom_point()
+```
+
+然后我们增加一个拟合的线。
+
+```{r}
+penguins |> 
+  ggplot(aes(x=flipper_length_mm,y=body_mass_g,color=species))+
+  geom_point()+
+  geom_smooth(method = 'lm')
+```
+
+然后我们发现这些线也分组了，那我们如果不想让它分组呢？我们会发现ggplot函数里的aes是共享的，每个图层里的函数是只针对自己的，所以我们只在point里分组即可。
+
+```{r}
+penguins |> 
+  ggplot(aes(x=flipper_length_mm,y=body_mass_g))+
+  geom_point(aes(color=species)) +
+  geom_smooth(method = 'lm')
+```
+
+如果我们想让不同的种类企鹅使用不同的形状来表示呢？
+
+```{r}
+penguins |> 
+  ggplot(aes(x=flipper_length_mm,y=body_mass_g))+
+  geom_point(aes(color=species,shape=species))+
+  geom_smooth(method = 'lm')
+```
+
+这里的color和shape只能放在point里，否则smooth就会分组。
+
+下面我们来增加标签，使用labs函数，先来看一下文档
+
+```{r}
+?labs
+```
+
+在ggplots里，增加label好像不止这一种方法，好像还可以使用xlab，ylab这样的，但是labs好像是最全，并且一站式的。
+
+```{r}
+penguins |> 
+  ggplot(aes(x=flipper_length_mm,y=body_mass_g))+
+  geom_point(aes(color=species,shape=species))+
+  geom_smooth(method = 'lm')+
+  labs(title = 'body mass and flipper',subtitle = 'they are positive relationship',alt = 'alt',caption = 'caption',tag = 'tag')+
+  scale_color_wsj()
+```
+
+我们可以通过上图看到各个lab的位置及样式。但是没看到alt在哪。
+
+```{r}
+penguins |> 
+  ggplot(aes(bill_length_mm,bill_depth_mm,color=species))+
+  geom_point()+
+  geom_smooth(method = 'lm')
+```
+
+```{r}
+penguins |> 
+  ggplot(aes(bill_depth_mm,species))+
+  geom_point()
+```
+
+发现是一堆点都在一条线上，因为一个是分类变量，一个是连续变量。使用箱图应该更好
+
+```{r}
+penguins |> 
+  ggplot(aes(bill_depth_mm,species))+
+  geom_boxplot()
+```
+
+书签：
+
+[1  Data visualization – R for Data Science (2e)](https://r4ds.hadley.nz/data-visualize)
+
+What does the `na.rm` argument do in [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html)? What is the default value of the argument? Create a scatterplot where you successfully use this argument set to `TRUE`
